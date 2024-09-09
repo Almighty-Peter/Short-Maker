@@ -16,9 +16,6 @@ def textToText(prompt,system_message,model="gpt-4o-mini"):
 
     return(completion.choices[0].message.content)
 
-def get_embedding(text, model="text-embedding-3-large"):
-    text = text.replace("\n", " ")
-    return client.embeddings.create(input = [text], model=model).data[0].embedding
 
 def textToAudio(prompt):
     response = client.audio.speech.create(
