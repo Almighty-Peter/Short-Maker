@@ -29,3 +29,15 @@ def textToAudio(prompt):
         audio_file.write(response.content)
     
     return audio_filename
+
+
+def textToImage(prompt, model="dall-e-3"):
+    response = client.images.generate(
+      model=model,
+      prompt=prompt,
+      size="1024x1024",
+      quality="standard",
+      n=1,
+    )
+
+    return response.data[0].url
