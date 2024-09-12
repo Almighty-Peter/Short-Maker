@@ -93,6 +93,8 @@ If you find multiple points that require different images, simply rewrite the fo
 If no image is needed, no suggestion is necessary. Keep image duration short to maintain viewer engagement."""
 
 
+import sys
+sys.path.append('/Users/peternyman/Documents/GitHub/Short-Maker')
 from ClipsMainClass import Main
 import os
 import sqlite3
