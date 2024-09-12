@@ -137,6 +137,7 @@ If no image is needed, no suggestion is necessary. Keep image duration short to 
 import sys
 sys.path.append('/Users/peternyman/Documents/GitHub/Short-Maker')
 from ClipsMainClass import Main
+from AiApis import textToText
 import os
 import sqlite3
 from pytube import YouTube
@@ -156,8 +157,11 @@ for (video_id1, channel1, title1, position_found1, views1, date1, search_query1,
         print(channel1)
 
         # try:
+
+
         print(video_id1)
         yt = YouTube(f'https://www.youtube.com/watch?v={video_id1}')
+
         if 10800 > yt.length > 120:
 
             main = Main("FUNNY VLOGS", video_id1,yt,captions_prompt, captions_sys_message, time_stamps_prompt, time_stamps_sys_message, intro_prompt, intro_sys_message, image_prompt, image_sys_message)
@@ -179,5 +183,10 @@ for (video_id1, channel1, title1, position_found1, views1, date1, search_query1,
         #     os.remove(f"/Users/peternyman/Downloads/{video_id1}.mp4")
     
     
+
+
+
+
+
 
 
