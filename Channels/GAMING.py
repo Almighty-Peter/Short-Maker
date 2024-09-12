@@ -99,7 +99,8 @@ The introduction should be no more than 3-4 sentences long. It should leave the 
 """
 
 
-
+import sys
+sys.path.append('/Users/peternyman/Documents/GitHub/Short-Maker')
 from ClipsMainClass import Main
 import os
 import sqlite3
