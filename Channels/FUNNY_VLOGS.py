@@ -134,6 +134,8 @@ If you find multiple points that require different images, simply rewrite the fo
 If no image is needed, no suggestion is necessary. Keep image duration short to maintain viewer engagement."""
 
 
+import sys
+sys.path.append('/Users/peternyman/Documents/GitHub/Short-Maker')
 from ClipsMainClass import Main
 import os
 import sqlite3
@@ -149,32 +151,32 @@ cursor = connection.cursor()
 cursor.execute('SELECT * FROM YTVideos WHERE channel IN ("MrBeast", "Zach King", "nigahiga", "David Dobrik", "WhistlinDiesel", "The Joe Rogan Experience", "NELK") ORDER BY RANDOM()')
 rows = cursor.fetchall()
 for (video_id1, channel1, title1, position_found1, views1, date1, search_query1, data1) in rows:
-    if views1 > 100000:
+    if views1 > 1000000:
         print("next")
         print(channel1)
 
-        try:
-            print(video_id1)
-            yt = YouTube(f'https://www.youtube.com/watch?v={video_id1}')
-            if 10800 > yt.length > 120:
+        # try:
+        print(video_id1)
+        yt = YouTube(f'https://www.youtube.com/watch?v={video_id1}')
+        if 10800 > yt.length > 120:
 
-                main = Main("FUNNY VLOGS", video_id1,yt,captions_prompt, captions_sys_message, time_stamps_prompt, time_stamps_sys_message, intro_prompt, intro_sys_message, image_prompt, image_sys_message)
-                main.main()
-
-
-                try:
-                    for position, timeStamp in enumerate(main.timeStamps): 
-                        main.clip(timeStamp[0], timeStamp[1], timeStamp[2], position)
-                except Exception as e:
-                    print(f"An error occurred: {e}")
-                    traceback.print_exc()
+            main = Main("FUNNY VLOGS", video_id1,yt,captions_prompt, captions_sys_message, time_stamps_prompt, time_stamps_sys_message, intro_prompt, intro_sys_message, image_prompt, image_sys_message)
+            main.main()
 
 
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            traceback.print_exc()
-        finally:
-            os.remove(f"/Users/peternyman/Downloads/{video_id1}.mp4")
+            # try:
+            for position, timeStamp in enumerate(main.timeStamps): 
+                main.clip(timeStamp[0], timeStamp[1], timeStamp[2], position)
+            # except Exception as e:
+                # print(f"An error occurred: {e}")
+                # traceback.print_exc()
+
+
+        # except Exception as e:
+        #     print(f"An error occurred: {e}")
+        #     traceback.print_exc()
+        # finally:
+        #     os.remove(f"/Users/peternyman/Downloads/{video_id1}.mp4")
     
     
 
