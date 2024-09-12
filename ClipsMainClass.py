@@ -106,8 +106,7 @@ class Main():
 
         if self.get_how_many > 9:
             self.get_how_many = 9
-        #self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9
-        self.get_how_many = 1
+
         self.download_path = "/Users/peternyman/Downloads/"
 
         self.captions_prompt = captions_prompt
@@ -429,8 +428,6 @@ class Main():
 
 
         if self.TKChannel == "MOTIVATIONAL":
-            # brain_root = random.choice([file for file in os.listdir('/Users/peternyman/Clips/brainRoot/MOTIVATIONAL') if file.endswith('mp4')])
-            brain_root = random.choice([file for file in os.listdir('/Users/peternyman/Clips/brainRoot') if file.endswith('mp4')])
             text_clips  = MOTIVATIONAL_create_text_clips(transcript, frame_width, quality_of_video)
         elif self.TKChannel == "SCIENCE":
             # brain_root = random.choice([file for file in os.listdir('/Users/peternyman/Clips/brainRoot/SCIENCE') if file.endswith('mp4')])
