@@ -14,7 +14,7 @@ def textToText(prompt,system_message,model="gpt-4o-mini"):
       ]
     )
 
-    return(completion.choices[0].message.content)
+    return(completion.choices[0].message.content) # TEXT
 
 
 def textToAudio(prompt):
@@ -28,7 +28,7 @@ def textToAudio(prompt):
     with open(audio_filename, 'wb') as audio_file:
         audio_file.write(response.content)
     
-    return audio_filename
+    return audio_filename # PATH TO AUDIO FILE
 
 
 def textToImage(prompt, model="dall-e-3"):
@@ -40,4 +40,4 @@ def textToImage(prompt, model="dall-e-3"):
       n=1,
     )
 
-    return response.data[0].url
+    return response.data[0].url #LINK TO IMAGE
