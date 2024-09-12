@@ -61,9 +61,11 @@ cursor = connection.cursor()
 cursor.execute("Drop TABLE IF EXISTS TKCuts")
 connection.commit()
 
+
+
 create_table_query = """
 CREATE TABLE IF NOT EXISTS TKCuts (   
-    channel TEXT,
+    YTChannel TEXT,
     TKChannel TEXT,
 
     video_id CHAR(11), 
@@ -104,7 +106,8 @@ class Main():
 
         if self.get_how_many > 9:
             self.get_how_many = 9
-        
+        #self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9self.get_how_many = 9
+        self.get_how_many = 1
         self.download_path = "/Users/peternyman/Downloads/"
 
         self.captions_prompt = captions_prompt
@@ -387,7 +390,7 @@ class Main():
         
         frame_width = 108*quality_of_video
         frame_height = 192*quality_of_video
-        frame_rate = 10
+        frame_rate = 40
 
 
         
@@ -470,7 +473,7 @@ class Main():
         if self.TKChannel == "MOTIVATIONAL" or self.TKChannel == "SCIENCE" or self.TKChannel == "FUNNY VLOGS":
             
             all_prompts = self.create_images_concepts(start_time, end_time, transcript)
-            
+            print(all_prompts)
             image_clips = [self.create_image_clip(prompt["image_prompt"], prompt["start"], prompt["duration"]) for prompt in all_prompts]
             composite_clip = CompositeVideoClip([composite_clip] + image_clips)
 
@@ -497,8 +500,8 @@ class Main():
         cursor.execute('DELETE FROM TKCuts WHERE  video_id = ? AND start_time = ? AND end_time = ?', (self.video_id,start_time,end_time))
         insert_query = """
         INSERT INTO TKCuts (
-             YTChannel, TKChannel, video_id, start_time, end_time, event_date, caption, TK_link, length, size_of_captions_to_GPT, position, data
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, )
+            YTChannel, TKChannel, video_id, start_time, end_time, event_date, caption, TK_link, length, size_of_captions_to_GPT, position, data
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
 
         cursor.execute(insert_query, (
